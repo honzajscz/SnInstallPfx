@@ -1,0 +1,12 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net461</TargetFramework>
+    <AssemblyTitle>Pfx Strong Name Signing Importer</AssemblyTitle>
+    <AssemblyDescription>Utility to replace the sn.exe -i command that does not accepts password. Created by Honzajscz</AssemblyDescription>
+    <AssemblyProduct>DevOps</AssemblyProduct>
+    <OutputType>Exe</OutputType>
+    <Version>0.1.0</Version>
+  </PropertyGroup>
+
+</Project>
