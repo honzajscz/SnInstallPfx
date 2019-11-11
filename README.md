@@ -1,6 +1,6 @@
 ## PFX problem
 
-Have you ever receive following MSBuild error?
+Have you ever received following MSBuild error?
 ```
 error MSB3325: Cannot import the following key file: my.pfx. 
 The key file may be password protected. 
