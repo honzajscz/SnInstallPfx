@@ -26,6 +26,10 @@ I have written a .NET utility that overcomes the aforementioned drawbacks. It co
 SnInstallPfx.exe <pfx_infile> <pfx_password>
 ```
 The hash computing is copied from the MSBuild source code on GitHub.
+
+## Download 
+Check [the release tab](https://github.com/honzajscz/SnInstallPfx/releases).
+
 ## Useful commands
 
 ```
