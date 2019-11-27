@@ -12,14 +12,16 @@ namespace SnInstallPfx
         static int Main(string[] args)
         {
             // params and usage
-            if (args.Length == 0 || args[0] == "?" || args[0] == "-?" || args.Length != 2)
+            if (args.Length == 0 || args[0] == "?" || args[0] == "-?" || args.Length != 2 || args.Length != 3)
             {
                 Console.WriteLine("By Honzajscz at 2019");
                 Console.WriteLine("Installs key pair from <pfx_infile> into a key container compatible for MSBuild.");
                 Console.WriteLine("This utility is an alternative for command sn.exe -i <infile> <container>.");
-                Console.WriteLine("It accepts password from command line and automatically generates a container for <pxf_infile>.");
+                Console.WriteLine("It accepts password from command line and automatically generates a container name for <pxf_infile> if no container name is specified via the <container_name> argument.");
                 Console.WriteLine();
-                Console.WriteLine($"Usage: {Assembly.GetEntryAssembly().GetName().Name}.exe <pfx_infile> <pfx_password>");
+                Console.WriteLine("Usage:");
+                Console.WriteLine($"{Assembly.GetEntryAssembly().GetName().Name}.exe <pfx_infile> <pfx_password>");
+                Console.WriteLine($"{Assembly.GetEntryAssembly().GetName().Name}.exe <pfx_infile> <pfx_password> <container_name>");
                 Console.WriteLine();
 
                 return -1;
@@ -27,8 +29,8 @@ namespace SnInstallPfx
 
             string pfxPath = args[0];
             string pfxPassword = args[1];
+            string pfxContainer = args.Length == 3 ? args[2] : ResolveKeySourceTask.ResolveAssemblyKey(pfxPath);
 
-            var pfxContainer = ResolveKeySourceTask.ResolveAssemblyKey(pfxPath);
             if (ResolveKeySourceTask.IsContainerInstalled(pfxContainer))
             {
                 //Installs from infile in the specified key container. The key container resides in the strong name CSP.
@@ -36,8 +38,8 @@ namespace SnInstallPfx
                 Console.Error.WriteLine("To delete the key container run following command from the Developer Command Prompt:");
                 Console.Error.WriteLine($"sn.exe -d {pfxContainer}");
                 Console.Error.WriteLine();
-                Console.Error.WriteLine($"To list all installed key containers run following command:");
-                Console.Error.WriteLine($"certutil -csp \"Microsoft Strong Cryptographic Provider\" -key");
+                Console.Error.WriteLine("To list all installed key containers run following command:");
+                Console.Error.WriteLine("certutil -csp \"Microsoft Strong Cryptographic Provider\" -key");
                 return -2;
             }
 
