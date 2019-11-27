@@ -20,10 +20,11 @@ This command has two drawbacks
  2. You have to enter PFX password. This password cannot be passed as a parameter which make things complicated in batch scenarios.
 
 ## SnInstallPFX utility
-I have written a .NET utility that overcomes the aforementioned drawbacks. It computes the container name from the PFX file and accepts the password as a parameter. 
+I have written a .NET utility that overcomes the aforementioned drawbacks. It computes the container name from the PFX file (if not specified) and accepts the password as a parameter.
 
 ```
 SnInstallPfx.exe <pfx_infile> <pfx_password>
+SnInstallPfx.exe <pfx_infile> <pfx_password> <container_name>
 ```
 The hash computing is copied from the MSBuild source code on GitHub.
 
