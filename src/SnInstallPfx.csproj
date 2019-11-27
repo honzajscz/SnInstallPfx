@@ -7,6 +7,7 @@
     <AssemblyProduct>DevOps</AssemblyProduct>
     <OutputType>Exe</OutputType>
     <Version>0.1.0</Version>
+    <ApplicationIcon>key.ico</ApplicationIcon>
   </PropertyGroup>
 
 </Project>
