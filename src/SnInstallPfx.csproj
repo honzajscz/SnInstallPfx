@@ -5,8 +5,11 @@
     <AssemblyTitle>Pfx Strong Name Signing Importer</AssemblyTitle>
     <AssemblyDescription>Utility to replace the sn.exe -i command that does not accepts password. Created by Honzajscz</AssemblyDescription>
     <AssemblyProduct>DevOps</AssemblyProduct>
+    <Authors>Honzajscz - jan.vratislav@gmail.com</Authors>
+    <RepositoryUrl>https://github.com/honzajscz/SnInstallPfx</RepositoryUrl>
+    <Copyright>Copyright © 2019</Copyright> 
     <OutputType>Exe</OutputType>
-    <Version>0.1.0</Version>
+    <Version>0.1.1</Version>
     <ApplicationIcon>key.ico</ApplicationIcon>
   </PropertyGroup>
 
