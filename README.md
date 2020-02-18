@@ -40,4 +40,8 @@ certutil -csp "Microsoft Strong Cryptographic Provider" -key
 // delete a container from CSP
 certutil -delkey -csp "Microsoft Strong Cryptographic Provider" "<container>"
 
+// delete all VS_KEY_* containers 
+certutil -csp "Microsoft Strong Cryptographic Provider" -key | Select-String -Pattern "VS_KEY" | %{ $_.ToString().Trim()} | %{ certutil -delkey -csp "Microsoft Strong Cryptographic Provider" $_}
+
+certutil -csp "Microsoft Strong Cryptographic Provider" -key | Select-String vs_key | %{ $_.ToString().trim()} | %{ sn -d $_}
 ```
