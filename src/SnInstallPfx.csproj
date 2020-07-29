@@ -9,7 +9,7 @@
     <RepositoryUrl>https://github.com/honzajscz/SnInstallPfx</RepositoryUrl>
     <Copyright>Copyright © 2019</Copyright> 
     <OutputType>Exe</OutputType>
-    <Version>0.1.1</Version>
+    <Version>0.1.2</Version>
     <ApplicationIcon>key.ico</ApplicationIcon>
   </PropertyGroup>
 
