@@ -23,8 +23,9 @@ This command has two drawbacks
 I have written a .NET utility that overcomes the aforementioned drawbacks. It computes the container name from the PFX file (if not specified) and accepts the password as a parameter.
 
 ```
-SnInstallPfx.exe <pfx_infile> <pfx_password>
-SnInstallPfx.exe <pfx_infile> <pfx_password> <container_name>
+SnInstallPfx.exe <pfx_infile> // show information about the pfx_infile
+SnInstallPfx.exe <pfx_infile> <pfx_password> // install the pfx_infile 
+SnInstallPfx.exe <pfx_infile> <pfx_password> <container_name> // install the pfx_infile under container_name
 ```
 The hash computing is copied from the MSBuild source code on GitHub.
 
