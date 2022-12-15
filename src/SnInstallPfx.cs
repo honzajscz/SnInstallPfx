@@ -70,11 +70,26 @@ namespace SnInstallPfx
                 Flags = CspProviderFlags.UseMachineKeyStore | CspProviderFlags.UseNonExportableKey
             };
 
-            using (var rsaCSP = new RSACryptoServiceProvider(cspParameters))
+            try
             {
-                rsaCSP.PersistKeyInCsp = true;
-                rsaCSP.ImportCspBlob(pfxCspBlob);
-            };
+                using (var rsaCSP = new RSACryptoServiceProvider(cspParameters))
+                {
+                    rsaCSP.PersistKeyInCsp = true;
+                    rsaCSP.ImportCspBlob(pfxCspBlob);
+                };
+            }
+            catch (CryptographicException e)
+            {
+                if (!e.Message.Contains("Object already exists."))
+                {
+                    throw;
+                }
+                Console.Error.WriteLine($"An error occurred while attempting to create the strong name CSP key container '{pfxContainer}'.");
+                Console.Error.WriteLine("It's likely that this container was already created by another user.");
+                Console.Error.WriteLine("Either get that user to modify the container to be readable by everyone, or to delete the container with the following command from the Developer Command Prompt:");
+                Console.Error.WriteLine($"sn.exe -d {pfxContainer}");
+                return -2;
+            }
 
             // output
             // This not an actual error - just avoiding output pollution.
